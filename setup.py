@@ -10,7 +10,8 @@ setuptools.setup(
     url="https://github.com/cooperbarth/texterize",
     packages=setuptools.find_packages(),
     install_requires=[
-        'numpy'
+        'numpy',
+        'docx'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
