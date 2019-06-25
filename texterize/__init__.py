@@ -1,6 +1,8 @@
 from docx import Document
 import numpy as np
 
+FONT = "some_monospaced_font"
+
 #DESCRIPTION HERE
 def create(text, img, writePath=""):
     '''
