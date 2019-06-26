@@ -3,8 +3,18 @@ import numpy as np
 
 FONT = "some_monospaced_font"
 
+import numpy as np
+import sys, os
+
+sys.path.append("./../src")
+from build_block import buildBlock
+from write_doc import writeDoc
+
+OUTPUT_DIRECTORY = "../test/output_files/texterize.docx"
+TEST_PATH = "../test/test_files/"
+
 #DESCRIPTION HERE
-def create(text, img, writePath=""):
+def create(text, img, write_path=OUTPUT_DIRECTORY, overwrite=True):
     '''
     params:
     -text: The text to be converted into an image, in string format
@@ -13,21 +23,15 @@ def create(text, img, writePath=""):
     '''
     assert isinstance(text, str), f"Expected input of type string, found {type(text)}."
 
-    TEXT_LENGTH = len(text)
-    TEXT_LENGTH_SQRT = int(math.sqrt(TEXT_LENGTH))
-    text_list = np.fromstring(text)[:TEXT_LENGTH_SQRT ** 2]
-    np.split(text_list, TEXT_LENGTH_SQRT) #We now have N rows of N characters
-    #need to make this ratio approximately equal to the picture aspect ratio, not just a square.
+    text_arr = buildBlock(text)
+    writeDoc(text_arr, write_path, overwrite)
     
 #DESCRIPTION HERE
-def createFromFile(filePath, img, writePath=""):
-    '''
-    params:
-    -text: TODO
-    -img: TODO
-    -writePath: TODO
-    '''
+def createFromFile(filePath, img, writePath=OUTPUT_DIRECTORY, overwrite=True):
     f = open(filePath, "r")
     text = f.read()
     f.close() #expand function this way so the file closes even if an error in rendering occurs
-    create(text, img, writePath)
+    create(text, img, writePath, overwrite)
+
+#TODO: Remove this; just for testing
+createFromFile(TEST_PATH + "test_1.txt", "", OUTPUT_DIRECTORY)
