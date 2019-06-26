@@ -11,11 +11,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=[
         'numpy',
-<<<<<<< HEAD
-        'docx'
-=======
         'python-docx'
->>>>>>> 37f60dc89712b381ded07fcce0abe545a562848d
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

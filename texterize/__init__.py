@@ -1,7 +1,8 @@
 import numpy as np, math, sys
 
-sys.path.append("../src")
+sys.path.append("./../src")
 from write_doc import writeDoc
+from build_block import buildBlock
 
 OUTPUT_DIRECTORY = "../test/output_files/"
 TEST_PATH = "../test/test_files/"
@@ -16,12 +17,7 @@ def create(text, img, writePath="./"):
     '''
     assert isinstance(text, str), f"Expected input of type string, found {type(text)}."
 
-    TEXT_LENGTH = len(text)
-    TEXT_LENGTH_SQRT = int(math.sqrt(TEXT_LENGTH))
-    text_list = np.asarray(list(text))[:TEXT_LENGTH_SQRT ** 2]
-    text_block = np.split(text_list, TEXT_LENGTH_SQRT)
-    #need to make this ratio approximately equal to the picture aspect ratio, not just a square.
-
+    text_block = buildBlock(text)
     writeDoc(text_block, writePath)
     
 #DESCRIPTION HERE
