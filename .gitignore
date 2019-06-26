@@ -104,10 +104,14 @@ venv.bak/
 .mypy_cache/
 
 #testing files
-test/test_files/*
+test/test_files/*.txt
 
 #testing images
-test/test_img/*
+test/test_img/*.png
+test/test_img/*.jpg
+test/test_img/*.jpeg
+test/test_img/*.tiff
 
 #output files
-test/output_files/*
+test/output_files/*.doc
+test/output_files/*.docx
