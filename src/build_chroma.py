@@ -6,9 +6,10 @@ def buildChroma(img_path):
     -img_path: the path to the image that the texterized image should be based on
 
     return:
-    An N-by-N-by-3 numpy array containing the RGB values for each pixel of the given image
+    An tuple containing an N-by-N-by-3 numpy array containing the RGB values for each pixel of the given image and its shape
     '''
     try:
-        return imread(img_path)
+        chroma = imread(img_path)
+        return chroma, chroma.shape
     except:
         raise Exception(f"Could not open image {img_path}, aborting.")

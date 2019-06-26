@@ -1,7 +1,7 @@
 import numpy as np
 
 #forms a 3-D numpy array representing the RGB values to apply to each character in the output file
-def coalesce(block, chroma):
+def coalesce(block, chroma, scaling_factor):
     '''
     params:
     -block: A 2-D numpy array representing the rows of text to be printed
@@ -11,6 +11,6 @@ def coalesce(block, chroma):
     An MxNx3 numpy array, where MxN is the shape of the block parameter, containing the aggregate RGB values for each character
     '''
 
-    
+    print(block.shape, chroma.shape)
 
     return

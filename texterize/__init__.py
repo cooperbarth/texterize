@@ -21,8 +21,9 @@ def create(text, img, write_path=OUTPUT_DIRECTORY, overwrite=True):
     '''
     assert isinstance(text, str), f"Expected input of type string, found {type(text)}."
 
-    text_arr = buildBlock(text)
-    coalesce(text_arr, buildChroma(img))
+    chroma, chroma_shape = buildChroma(img)
+    text_arr = buildBlock(text, chroma_shape)
+    coalesce(text_arr, chroma)
     writeDoc(text_arr, write_path, overwrite)
     
 #Run create() using text in a .txt file, rather than as input
