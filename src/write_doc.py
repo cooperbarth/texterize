@@ -3,11 +3,19 @@ from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
-FONT = "Courier"
+FONT = "Courier" #square font
 FONT_SIZE = 5.0
 LINE_SPACING = 1.0
 
+#writes a text block to a .docx file
 def writeDoc(text_list, write_path, overwrite):
+    '''
+    params:
+    -text_list: TODO
+    -write_path: TODO
+    -overwrite: TODO
+    '''
+
     document = Document()
     font = document.styles['Normal'].font
     font.name = FONT

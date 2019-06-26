@@ -34,7 +34,10 @@ def createFromFile(filePath, img, writePath=OUTPUT_DIRECTORY, overwrite=True):
     -writePath: The filename/path to which the resulting document should be written
     -overwrite: Bool representing whether an existing doc with the given filepath should be overwritten
     '''
-    f = open(filePath, "r")
-    text = f.read()
-    f.close() #expand function this way so the file closes even if an error in rendering occurs
+    try:
+        f = open(filePath, "r")
+        text = f.read()
+        f.close() #expand function this way so the file closes even if an error in rendering occurs
+    except:
+        raise Exception(f"Could not open file {filePath}, aborting.")
     create(text, img, writePath, overwrite)
