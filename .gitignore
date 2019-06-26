@@ -103,6 +103,8 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-#MS Word
-.doc
-.docx
+#testing files
+test/test_files/
+
+#output files
+test/output_files/
