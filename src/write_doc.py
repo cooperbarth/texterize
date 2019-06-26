@@ -8,9 +8,6 @@ FONT_SIZE = 5.0
 LINE_SPACING = 1.0
 
 def writeDoc(text_list, write_path, overwrite):
-    if overwrite and os.path.exists(write_path):
-        os.remove(write_path)
-
     document = Document()
     font = document.styles['Normal'].font
     font.name = FONT
@@ -26,4 +23,6 @@ def writeDoc(text_list, write_path, overwrite):
             p.text += char
         p.text += "\n"
  
+    if overwrite and os.path.exists(write_path):
+            os.remove(write_path)
     document.save(write_path)

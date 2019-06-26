@@ -11,7 +11,8 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=[
         'numpy',
-        'python-docx'
+        'python-docx',
+        'matplotlib'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

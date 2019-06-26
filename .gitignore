@@ -106,5 +106,8 @@ venv.bak/
 #testing files
 test/test_files/*
 
+#testing images
+test/test_img/*
+
 #output files
 test/output_files/*
