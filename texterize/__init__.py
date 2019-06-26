@@ -38,9 +38,3 @@ def createFromFile(filePath, img, writePath=OUTPUT_DIRECTORY, overwrite=True):
     text = f.read()
     f.close() #expand function this way so the file closes even if an error in rendering occurs
     create(text, img, writePath, overwrite)
-
-#TODO: Remove this; just for testing
-TEST_PATH = "../test/test_files/"
-TEST_IMG_PATH = "../test/test_img/"
-
-createFromFile(TEST_PATH + "test_1.txt", TEST_IMG_PATH + "test_1.jpeg", OUTPUT_DIRECTORY)
