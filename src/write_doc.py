@@ -2,23 +2,23 @@ import numpy as np
 from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.text.parfmt import ParagraphFormat
 
 FONT = "Courier"
+FONT_SIZE = 5.0
+LINE_SPACING = 1.0
 
-def writeDoc(text_list):
+def writeDoc(text_list, write_path):
     document = Document()
+    font = document.styles['Normal'].font
+    font.name = FONT
+    font.size = Pt(FONT_SIZE)
+
     for line in text_list:
         p = document.add_paragraph()
         for char in line:
             p.text += char
-        
-        run = p.add_run()
-        font = run.font
-        font.name = FONT
-        font.size = Pt(12)
 
-        #p_format = ParagraphFormat()
-        #p_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        #p.paragraph_format = p_format
-    document.save("texterize.docx")
+        p_format = p.paragraph_format
+        p_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p_format.line_spacing = LINE_SPACING
+    document.save(write_path)
