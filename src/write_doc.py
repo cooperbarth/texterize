@@ -3,7 +3,7 @@ from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
-FONT = "Courier" #square font
+FONT = "Courier" #any monospaced font
 FONT_SIZE = 5.0
 LINE_SPACING = 1.0
 
