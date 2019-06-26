@@ -1,4 +1,4 @@
 # texterize
-Making a picture worth a thousand words.
+Making a picture worth a thousand words (or so).
 
-`texterize` is a package that creates ASCII art out of blocks of text. It utilizes monospaced fonts and pixel aggregation to recreate images out of input text.
+`texterize` is a package that uses pixel aggregation to create ASCII art out of blocks of text.
