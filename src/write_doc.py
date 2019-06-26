@@ -5,7 +5,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 FONT = "Courier"
 
-def writeDoc(text_list):
+def writeDoc(text_list, write_directory):
     document = Document()
     for line in text_list:
         p = document.add_paragraph()
@@ -15,8 +15,9 @@ def writeDoc(text_list):
         run = p.add_run()
         font = run.font
         font.name = FONT
-        font.size = Pt(12)
+        font.size = Pt(2)
 
         p_format = p.paragraph_format
         p_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    document.save("texterize.docx")
+        p_format.line_spacing = 1.0
+    document.save(f"{write_directory}/texterize.docx")
