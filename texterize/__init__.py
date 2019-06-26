@@ -1,7 +1,7 @@
-from docx import Document
-import numpy as np
+import numpy as np, math, sys
 
-FONT = "some_monospaced_font"
+sys.path.append("../src")
+from write_doc import writeDoc
 
 #DESCRIPTION HERE
 def create(text, img, writePath=""):
@@ -15,9 +15,11 @@ def create(text, img, writePath=""):
 
     TEXT_LENGTH = len(text)
     TEXT_LENGTH_SQRT = int(math.sqrt(TEXT_LENGTH))
-    text_list = np.fromstring(text)[:TEXT_LENGTH_SQRT ** 2]
-    np.split(text_list, TEXT_LENGTH_SQRT) #We now have N rows of N characters
+    text_list = np.asarray(list(text))[:TEXT_LENGTH_SQRT ** 2]
+    text_block = np.split(text_list, TEXT_LENGTH_SQRT)
     #need to make this ratio approximately equal to the picture aspect ratio, not just a square.
+
+    writeDoc(text_block)
     
 #DESCRIPTION HERE
 def createFromFile(filePath, img, writePath=""):
@@ -31,3 +33,5 @@ def createFromFile(filePath, img, writePath=""):
     text = f.read()
     f.close() #expand function this way so the file closes even if an error in rendering occurs
     create(text, img, writePath)
+
+create("Hello, this is Cooper, and fskdjgnskjgksdfl", "")
