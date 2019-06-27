@@ -17,7 +17,7 @@ def buildBlock(text, dimensions):
 
     append_index = 0
     while len(char_arr) < CHROMA_AREA:
-        char_arr += char_arr[append_index]
+        char_arr = np.append(char_arr, char_arr[append_index])
         append_index += 1
     
-    return np.reshape(char_arr, dimensions)
+    return np.reshape(char_arr, dimensions[:2])

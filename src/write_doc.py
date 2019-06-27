@@ -11,7 +11,7 @@ LINE_SPACING = 1.0
 def writeDoc(text_arr, chroma, write_path, overwrite):
     '''
     params:
-    -text_list: TODO
+    -text_arr: TODO
     -chroma: TODO
     -write_path: TODO
     -overwrite: TODO
@@ -27,7 +27,7 @@ def writeDoc(text_arr, chroma, write_path, overwrite):
     p_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_format.line_spacing = LINE_SPACING
 
-    for line in text_list:
+    for line in text_arr:
         for char in line:
             p.text += char
         p.text += "\n"
