@@ -9,16 +9,28 @@ FONT = "Courier" #any monospaced font
 FONT_SIZE = 1.0
 LINE_SPACING = 0.5
 
-#writes a text block to a .docx file
-def writeDoc(text_arr, chroma, write_path, overwrite):
+def write(text_arr, chroma, output_file_type, write_path, overwrite):
     '''
     params:
     -text_arr: A 2-D numpy array of the text to write to the document
     -chroma: A 3-D numpy array containing the RGB values to assign to each character of text
+    -output_file_type: The type of file to write the texterized image to
     -write_path: The path to write the output file to
     -overwrite: A Boolean representing whether or not to overwrite an existing .docx file if found.
     '''
+    if output_file_type == "HTML":
+        writeHTML(text_arr, chroma, write_path, overwrite)
+    elif output_file_type == "Word":
+        writeDoc(text_arr, chroma, write_path, overwrite)
+    else:
+        raise Exception("Error writing file.")
 
+#writes a text block to a .HTML file
+def writeDoc(text_arr, chroma, write_path, overwrite):
+    print("hey")
+
+#writes a text block to a .docx file
+def writeDoc(text_arr, chroma, write_path, overwrite):
     document = Document()
     doc_style = document.styles['Normal']
 
@@ -34,7 +46,6 @@ def writeDoc(text_arr, chroma, write_path, overwrite):
 
     for i in range(text_arr.shape[0]):
         p = document.add_paragraph()
-        p.style = doc_style
         for j in range(text_arr.shape[1]):
             c = p.add_run(text_arr[i][j])
             R, G, B = [int(c) for c in chroma[i][j]]

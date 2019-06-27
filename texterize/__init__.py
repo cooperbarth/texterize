@@ -6,12 +6,13 @@ sys.path.append("./../src")
 from filter_text import filterText
 from build_chroma import buildChroma
 from build_block import buildBlock
-from write_doc import writeDoc
+from write_text import write
 
 OUTPUT_DIRECTORY = "../test/output_files/texterize.docx" #this should be changed to "./texterize.docx" upon release
+SUPPORTED_FILE_TYPES = ["HTML", "Word"]
 
 #main, input text as raw string
-def create(text, img_path, write_path=OUTPUT_DIRECTORY, overwrite=True):
+def create(text, img_path, output_file_type="HTML", write_path=OUTPUT_DIRECTORY, overwrite=True):
     '''
     params:
     -text: The text to be converted into an image, in string format
@@ -20,14 +21,15 @@ def create(text, img_path, write_path=OUTPUT_DIRECTORY, overwrite=True):
     -overwrite: Bool representing whether an existing doc with the given filepath should be overwritten
     '''
     assert isinstance(text, str), f"Expected input of type string, found {type(text)}."
+    assert output_file_type in SUPPORTED_FILE_TYPES, "Output file type not supported."
 
     text = filterText(text)
     chroma, chroma_shape = buildChroma(img_path, len(text))
     text_arr = buildBlock(text, chroma_shape)
-    writeDoc(text_arr, chroma, write_path, overwrite)
+    write(text_arr, chroma, output_file_type, write_path, overwrite)
     
 #Run create() using text in a .txt file, rather than as input
-def createFromFile(file_path, img_path, write_path=OUTPUT_DIRECTORY, overwrite=True):
+def createFromFile(file_path, img_path, output_file_type="HTML", write_path=OUTPUT_DIRECTORY, overwrite=True):
     '''
     params:
     -file_path: The path to the .txt file to pull the text from
