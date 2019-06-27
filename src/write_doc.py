@@ -31,8 +31,8 @@ def writeDoc(text_arr, chroma, write_path, overwrite):
     for i in range(text_arr.shape[0]):
         for j in range(text_arr.shape[1]):
             c = p.add_run(text_arr[i][j])
-            R, G, B = chroma[i][j]
-            c.font.color.rgb = RGBColor(int(R), int(G), int(B))
+            R, G, B = [int(c) for c in chroma[i][j]]
+            c.font.color.rgb = RGBColor(R, G, B)
         _ = p.add_run("\n")
  
     if overwrite and os.path.exists(write_path):
