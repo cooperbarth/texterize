@@ -4,21 +4,20 @@ def buildBlock(text, dimensions):
     '''
     params:
     -text: a string to be split into a block
-    -dimensions: a tuple containing the numpy shape of the input image
+    -dimensions: the numpy shape of the input image
 
     return:
-    A tuple containing a 2D numpy array and an integer scaling factor
+    A 2D numpy array of characters in the shape of dimensions
     '''
 
-    assert len(dimensions) == 3, "Chroma dimensions possess an invalid shape, aborting."
+    assert len(dimensions) == 3, "Image dimensions have an invalid shape, aborting."
 
+    char_arr = np.array(list(text))
+    CHROMA_AREA = dimensions[0] * dimensions[1]
 
-
-#ksdjbnfgklsd
-
-    TEXT_LENGTH_SQRT = int(math.sqrt(TEXT_LENGTH))
-    text_list = np.array(list(text))[:TEXT_LENGTH_SQRT ** 2]
-    text_block = np.array(np.split(text_list, TEXT_LENGTH_SQRT))
-
-    #need to check to make sure text doesn't wrap
-    return text_block, scaling_factor
+    append_index = 0
+    while len(char_arr) < CHROMA_AREA:
+        char_arr += char_arr[append_index]
+        append_index += 1
+    
+    return np.reshape(char_arr, dimensions)

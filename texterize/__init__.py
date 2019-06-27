@@ -3,11 +3,12 @@ import numpy as np
 import sys
 
 sys.path.append("./../src")
+from filter_text import filterText
+from build_chroma import buildChroma
 from build_block import buildBlock
 from write_doc import writeDoc
-from build_chroma import buildChroma
 
-OUTPUT_DIRECTORY = "../test/output_files/texterize.docx"
+OUTPUT_DIRECTORY = "../test/output_files/texterize.docx" #this should be changed to "./texterize.docx" upon release
 
 #main, input text as raw string
 def create(text, img_path, write_path=OUTPUT_DIRECTORY, overwrite=True):
@@ -20,6 +21,7 @@ def create(text, img_path, write_path=OUTPUT_DIRECTORY, overwrite=True):
     '''
     assert isinstance(text, str), f"Expected input of type string, found {type(text)}."
 
+    text = filterText(text)
     chroma, chroma_shape = buildChroma(img_path, len(text))
     text_arr = buildBlock(text, chroma_shape)
     writeDoc(text_arr, chroma, write_path, overwrite)
