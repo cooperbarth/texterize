@@ -5,10 +5,6 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
 from docx.enum.section import WD_SECTION
 from docx.shared import RGBColor
 
-FONT = "Courier" #any monospaced font
-FONT_SIZE = 1.0
-LINE_SPACING = 0.5
-
 def write(text_arr, chroma, output_file_type, write_path, overwrite):
     '''
     params:
@@ -26,13 +22,17 @@ def write(text_arr, chroma, output_file_type, write_path, overwrite):
         raise Exception("Error writing file.")
 
 #writes a text block to a .HTML file
-def writeDoc(text_arr, chroma, write_path, overwrite):
-    print("hey")
+def writeHTML(text_arr, chroma, write_path, overwrite):
+    print("Document written as HTML")
 
 #writes a text block to a .docx file
 def writeDoc(text_arr, chroma, write_path, overwrite):
+    FONT = "Courier" #doesn't work right now
+    FONT_SIZE = 1.0 #Fix to dynamically change
+    LINE_SPACING = 0.5 #Fix to dynamically change
+
     document = Document()
-    doc_style = document.styles['Normal']
+    doc_style = document.styles["Normal"]
 
     font = doc_style.font
     font.name = FONT
