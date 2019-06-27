@@ -7,4 +7,4 @@ from __init__ import createFromFile
 TEST_PATH = "./test_files/"
 TEST_IMG_PATH = "./test_img/"
 
-createFromFile(TEST_PATH + "test_1.txt", TEST_IMG_PATH + "test_1.jpeg") #currently only works with jpeg?
+createFromFile(TEST_PATH + "test_1.txt", TEST_IMG_PATH + "test_1.jpeg")

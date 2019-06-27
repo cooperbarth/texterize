@@ -8,10 +8,11 @@ FONT_SIZE = 5.0
 LINE_SPACING = 1.0
 
 #writes a text block to a .docx file
-def writeDoc(text_list, write_path, overwrite):
+def writeDoc(text_arr, chroma, write_path, overwrite):
     '''
     params:
     -text_list: TODO
+    -chroma: TODO
     -write_path: TODO
     -overwrite: TODO
     '''

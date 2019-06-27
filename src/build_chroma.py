@@ -18,7 +18,7 @@ def buildChroma(img_path, text_length):
 
     ORIG_WIDTH, ORIG_HEIGHT, _ = img_matrix.shape #don't know if these are in right order (could be height then width)
     if ORIG_WIDTH * ORIG_HEIGHT < text_length:
-        return img_matrix
+        return img_matrix, img_matrix.shape
 
     SCALING_FACTOR = math.gcd(ORIG_WIDTH, ORIG_HEIGHT)
     img_width = int(ORIG_WIDTH / SCALING_FACTOR)
@@ -30,6 +30,5 @@ def buildChroma(img_path, text_length):
         img_height += REDUCED_HEIGHT
 
     img_compressed = img.thumbnail((img_width, img_height), Image.ANTIALIAS)   
-    return np.array(img.convert('RGB'))
-
-buildChroma("./../test/test_img/test_1.jpeg", 125)
+    img_matrix_compressed = np.array(img.convert('RGB'))
+    return img_matrix_compressed, img_matrix_compressed.shape
