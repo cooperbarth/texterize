@@ -12,7 +12,7 @@ setuptools.setup(
     install_requires=[
         'numpy',
         'python-docx',
-        'matplotlib'
+        'pillow'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
