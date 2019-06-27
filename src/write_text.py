@@ -23,7 +23,28 @@ def write(text_arr, chroma, output_file_type, write_path, overwrite):
 
 #writes a text block to a .HTML file
 def writeHTML(text_arr, chroma, write_path, overwrite):
-    print("Document written as HTML")
+    if overwrite and os.path.exists(write_path):
+        os.remove(write_path)
+    doc = open(write_path, "w")
+    doc.write('''
+    <html>
+        <head>
+            <title>Texterize</title>
+        </head>
+        <body>
+    ''')
+
+    for i in range(text_arr.shape[0]):
+        doc.write("<text>")
+        for j in range(text_arr.shape[1]):
+            doc.write(text_arr[i][j])
+        doc.write("</text>")
+
+    doc.write('''
+        </body>
+    </html>
+    ''')
+    doc.close()
 
 #writes a text block to a .docx file
 def writeDoc(text_arr, chroma, write_path, overwrite):

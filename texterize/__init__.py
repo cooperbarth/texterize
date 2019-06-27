@@ -8,7 +8,8 @@ from build_chroma import buildChroma
 from build_block import buildBlock
 from write_text import write
 
-OUTPUT_DIRECTORY = "../test/output_files/texterize.docx" #this should be changed to "./texterize.docx" upon release
+#OUTPUT_DIRECTORY = "../test/output_files/texterize.docx" #this should be changed to "./texterize.docx" upon release
+OUTPUT_DIRECTORY = "../test/output_files/texterize.html"
 SUPPORTED_FILE_TYPES = ["HTML", "Word"]
 
 #main, input text as raw string
@@ -21,7 +22,7 @@ def create(text, img_path, output_file_type="HTML", write_path=OUTPUT_DIRECTORY,
     -overwrite: Bool representing whether an existing doc with the given filepath should be overwritten
     '''
     assert isinstance(text, str), f"Expected input of type string, found {type(text)}."
-    assert output_file_type in SUPPORTED_FILE_TYPES, "Output file type not supported."
+    assert output_file_type in SUPPORTED_FILE_TYPES, (f"Output file type {output_file_type} not supported.")
 
     text = filterText(text)
     chroma, chroma_shape = buildChroma(img_path, len(text))
@@ -43,4 +44,4 @@ def createFromFile(file_path, img_path, output_file_type="HTML", write_path=OUTP
         f.close() #expand function this way so the file closes even if an error in rendering occurs
     except:
         raise Exception(f"Could not open file {file_path}, aborting.")
-    create(text, img_path, write_path, overwrite)
+    create(text, img_path, output_file_type, write_path, overwrite)
