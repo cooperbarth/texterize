@@ -1,12 +1,10 @@
 from docx import Document
 import numpy as np
-import sys
 
-sys.path.append("./src")
-from filter_text import filterText
-from build_chroma import buildChroma
-from build_block import buildBlock
-from write_file import write
+from src.filter_text import filterText
+from src.build_chroma import buildChroma
+from src.build_block import buildBlock
+from src.write_file import write
 
 OUTPUT_DIRECTORY = "./texterized_image"
 SUPPORTED_FILE_TYPES = ["HTML", "Word"]
