@@ -1,6 +1,7 @@
 from PIL import Image
 import math, numpy as np
 
+#Converts an image to a scaled 3D RGB numpy array
 def buildChroma(img_path, text_length):
     '''
     params:

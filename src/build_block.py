@@ -1,5 +1,6 @@
 import numpy as np, math
 
+#converts a string into a 2D numpy array of text the same shape as the image to be texterized
 def buildBlock(text, dimensions):
     '''
     params:

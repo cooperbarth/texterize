@@ -8,7 +8,7 @@ from build_chroma import buildChroma
 from build_block import buildBlock
 from write_file import write
 
-OUTPUT_DIRECTORY = "./texterized_image" #this should be changed to "./texterize" upon release
+OUTPUT_DIRECTORY = "./texterized_image"
 SUPPORTED_FILE_TYPES = ["HTML", "Word"]
 
 #main, input text as raw string
@@ -40,7 +40,7 @@ def createFromFile(file_path, img_path, output_file_type="HTML", write_path=OUTP
     try:
         f = open(file_path, "r")
         text = f.read()
-        f.close() #expand function this way so the file closes even if an error in rendering occurs
+        f.close()
     except:
         raise Exception(f"Could not open file {file_path}, aborting.")
     create(text, img_path, output_file_type, write_path, overwrite)
