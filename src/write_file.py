@@ -29,9 +29,14 @@ def writeHTML(text_arr, chroma, write_path, overwrite):
     FONT_SIZE = 750 / min(text_arr.shape[0], text_arr.shape[1])
     LINE_SPACING = FONT_SIZE * 0.75
 
-    write_path += ".html"
-    if overwrite and os.path.exists(write_path):
-        os.remove(write_path)
+    try:
+        if not write_path[:-5] == ".html":
+            write_path += ".html"
+        if overwrite and os.path.exists(write_path):
+            os.remove(write_path)
+    except:
+        raise Exception(f"Invalid write path {write_path}")
+    
     doc = open(write_path, "w")
     doc.write(f'''
     <html>
@@ -79,8 +84,12 @@ def writeDoc(text_arr, chroma, write_path, overwrite):
             c = p.add_run(text_arr[i][j])
             R, G, B = [int(c) for c in chroma[i][j]]
             c.font.color.rgb = RGBColor(R, G, B)
- 
-    write_path += ".docx"
-    if overwrite and os.path.exists(write_path):
-        os.remove(write_path)
-    document.save(write_path)
+
+    if not write_path[:-5] == ".docx" and not write_path[:-5] == ".doc":
+        write_path += ".docx"
+    try:
+        if overwrite and os.path.exists(write_path):
+            os.remove(write_path)
+        document.save(write_path)
+    except:
+        raise Exception(f"Invalid write path {write_path}")

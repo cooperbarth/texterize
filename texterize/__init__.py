@@ -6,9 +6,9 @@ sys.path.append("./../src")
 from filter_text import filterText
 from build_chroma import buildChroma
 from build_block import buildBlock
-from write_text import write
+from write_file import write
 
-OUTPUT_DIRECTORY = "../test/output_files/texterize" #this should be changed to "./texterize" upon release
+OUTPUT_DIRECTORY = "./texterized_image" #this should be changed to "./texterize" upon release
 SUPPORTED_FILE_TYPES = ["HTML", "Word"]
 
 #main, input text as raw string

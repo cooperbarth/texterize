@@ -119,3 +119,8 @@ test/output_files/*.html
 
 #.DS_Store
 *.DS_Store
+
+#Catchalls (Just in case)
+texterize/*.doc
+texterize/*.docx
+texterize/*.html
