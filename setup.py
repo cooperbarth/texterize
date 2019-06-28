@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="texterize",
-    version="1.0.0",
+    version="1.0.1",
     author="Cooper Barth",
     author_email="cooperfbarth@gmail.com",
     description="Making a picture worth a thousand words.",

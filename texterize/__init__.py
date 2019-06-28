@@ -2,7 +2,7 @@ from docx import Document
 import numpy as np
 import sys
 
-sys.path.append("./../src")
+sys.path.append("./src")
 from filter_text import filterText
 from build_chroma import buildChroma
 from build_block import buildBlock
