@@ -10,7 +10,7 @@
 ## Usage:
 `Texterize` is used to create colorized ASCII art out of a given image and selection of text. Upon feeding in an image and a string of text (either through a text file (via `createFromFile()`) or through raw input via (`create()`), an image will be generated in the desired format (either HTML or MS Word).
 
-```
+```python
 import texterize
 
 TEXT_FILE_PATH = "./path/to/text/FILE_NAME.txt"
