@@ -5,7 +5,7 @@ setuptools.setup(
     version="1.0.1",
     author="Cooper Barth",
     author_email="cooperfbarth@gmail.com",
-    description="Making a picture worth a thousand words.",
+    description="Making pictures worth a thousand words.",
     long_description_content_type="text/markdown",
     url="https://github.com/cooperbarth/texterize",
     packages=setuptools.find_packages(),
