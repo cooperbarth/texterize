@@ -7,5 +7,7 @@ from __init__ import createFromFile
 TEST_PATH = "./test_files/test_1.txt"
 TEST_IMG_PATH = "./test_img/test_1.jpg"
 FILE_TYPE = "Word"
+WRITE_PATH = "./output_files/texterize_test"
+OVERRIDE = True
 
-createFromFile(TEST_PATH, TEST_IMG_PATH, output_file_type=FILE_TYPE)
+createFromFile(TEST_PATH, TEST_IMG_PATH, output_file_type=FILE_TYPE, write_path=WRITE_PATH, override=OVERRIDE)
