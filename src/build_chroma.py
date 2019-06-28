@@ -16,7 +16,7 @@ def buildChroma(img_path, text_length):
     except:
         raise Exception(f"Could not open image {img_path}, aborting.")
 
-    ORIG_WIDTH, ORIG_HEIGHT, _ = img_matrix.shape #don't know if these are in right order (could be height then width)
+    ORIG_WIDTH, ORIG_HEIGHT, _ = img_matrix.shape
     if ORIG_WIDTH * ORIG_HEIGHT < text_length:
         return img_matrix, img_matrix.shape
 
@@ -29,6 +29,6 @@ def buildChroma(img_path, text_length):
         img_width += REDUCED_WIDTH
         img_height += REDUCED_HEIGHT
 
-    img_compressed = img.thumbnail((img_width, img_height), Image.ANTIALIAS)   
+    img_compressed = img.thumbnail((img_width, img_height), Image.ANTIALIAS)
     img_matrix_compressed = np.array(img.convert('RGB'))
     return img_matrix_compressed, img_matrix_compressed.shape

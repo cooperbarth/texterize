@@ -5,6 +5,8 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
 from docx.enum.section import WD_SECTION
 from docx.shared import RGBColor
 
+FONT = "Courier"
+
 def write(text_arr, chroma, output_file_type, write_path, overwrite):
     '''
     params:
@@ -14,6 +16,7 @@ def write(text_arr, chroma, output_file_type, write_path, overwrite):
     -write_path: The path to write the output file to
     -overwrite: A Boolean representing whether or not to overwrite an existing .docx file if found.
     '''
+
     if output_file_type == "HTML":
         writeHTML(text_arr, chroma, write_path, overwrite)
     elif output_file_type == "Word":
@@ -23,9 +26,8 @@ def write(text_arr, chroma, output_file_type, write_path, overwrite):
 
 #writes a text block to a .HTML file
 def writeHTML(text_arr, chroma, write_path, overwrite):
-    FONT = "courier"
     FONT_SIZE = 750 / min(text_arr.shape[0], text_arr.shape[1])
-    print(FONT_SIZE)
+    LINE_SPACING = FONT_SIZE * 0.75
 
     write_path += ".html"
     if overwrite and os.path.exists(write_path):
@@ -40,7 +42,7 @@ def writeHTML(text_arr, chroma, write_path, overwrite):
     ''')
 
     for i in range(text_arr.shape[0]):
-        doc.write(f"<div style='line-height:{FONT_SIZE * 0.75}pt;'>")
+        doc.write(f"<div style='line-height:{LINE_SPACING}pt;'>")
         for j in range(text_arr.shape[1]):
             R, G, B = [int(c) for c in chroma[i][j]]
             doc.write(f"<text style='font-family:courier; color:rgb({R},{G},{B});'>{text_arr[i][j]}</text>")
@@ -54,9 +56,8 @@ def writeHTML(text_arr, chroma, write_path, overwrite):
 
 #writes a text block to a .docx file
 def writeDoc(text_arr, chroma, write_path, overwrite):
-    FONT = "Courier"
-    FONT_SIZE = 1.0 #Fix to dynamically change
-    LINE_SPACING = 0.5 #Fix to dynamically change
+    FONT_SIZE = 400 / min(text_arr.shape[0], text_arr.shape[1])
+    LINE_SPACING = 0.65
 
     document = Document()
     doc_style = document.styles["Normal"]
