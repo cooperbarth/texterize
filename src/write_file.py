@@ -29,7 +29,7 @@ def writeHTML(text_arr, chroma, write_path, overwrite):
     -the path to the output file
     '''
     FONT_SIZE = 750 / min(text_arr.shape[0], text_arr.shape[1])
-    LINE_SPACING = FONT_SIZE * 0.75
+    LINE_SPACING = FONT_SIZE * 0.45
 
     try:
         if not write_path[:-5] == ".html":
@@ -45,14 +45,14 @@ def writeHTML(text_arr, chroma, write_path, overwrite):
         <head>
             <title>Texterize</title>
         </head>
-        <body style='font-size:{FONT_SIZE}pt;'>
+        <body style='font-size:{FONT_SIZE}pt; line-height:{LINE_SPACING}pt; font-family:courier; letter-spacing:-1;'>
     ''')
 
     for i in range(text_arr.shape[0]):
-        doc.write(f"<div style='line-height:{LINE_SPACING}pt;'>")
+        doc.write(f"<div>")
         for j in range(text_arr.shape[1]):
             R, G, B = [int(c) for c in chroma[i][j]]
-            doc.write(f"<text style='font-family:courier; color:rgb({R},{G},{B});'>{text_arr[i][j]}</text>")
+            doc.write(f"<text style='color:rgb({R},{G},{B});'>{text_arr[i][j]}</text>")
         doc.write("</div>")
 
     doc.write('''

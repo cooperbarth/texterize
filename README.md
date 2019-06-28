@@ -1,7 +1,7 @@
 # texterize
 `texterize` is a package that uses pixel aggregation to create ASCII art out of blocks of text.
 
-{Insert Images Here}
+![texterize Example Images](images/slide.png)
 
 ## Installation:
 `python3 -m pip install texterize`

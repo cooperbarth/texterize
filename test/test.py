@@ -4,7 +4,7 @@ sys.path.append('../texterize')
 from __init__ import create
 from __init__ import createFromFile
 
-TEST_PATH = "./test_files/test_2.txt"
+TEST_PATH = "./test_files/test_3.txt"
 TEST_IMG_PATH = "./test_img/test_2.jpg"
 FILE_TYPE = "HTML"
 WRITE_PATH = "./output_files/texterize_test"
