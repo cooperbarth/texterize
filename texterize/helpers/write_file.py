@@ -31,6 +31,9 @@ def writeHTML(text_arr, chroma, write_path, overwrite):
 
     FONT_SIZE = 750 / min(text_arr.shape[0], text_arr.shape[1])
     LINE_SPACING = FONT_SIZE * 0.45
+    if LINE_SPACING < 1:
+        FONT_SIZE /= LINE_SPACING
+        LINE_SPACING = 1
 
     try:
         if not write_path[:-5] == ".html":
