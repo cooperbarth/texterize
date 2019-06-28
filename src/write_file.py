@@ -7,16 +7,8 @@ from docx.shared import RGBColor
 
 FONT = "Courier"
 
+#helper function to 
 def write(text_arr, chroma, output_file_type, write_path, overwrite):
-    '''
-    params:
-    -text_arr: A 2-D numpy array of the text to write to the document
-    -chroma: A 3-D numpy array containing the RGB values to assign to each character of text
-    -output_file_type: The type of file to write the texterized image to
-    -write_path: The path to write the output file to
-    -overwrite: A Boolean representing whether or not to overwrite an existing .docx file if found.
-    '''
-
     if output_file_type == "HTML":
         writeHTML(text_arr, chroma, write_path, overwrite)
     elif output_file_type == "Word":
@@ -26,6 +18,16 @@ def write(text_arr, chroma, output_file_type, write_path, overwrite):
 
 #writes a text block to a .HTML file
 def writeHTML(text_arr, chroma, write_path, overwrite):
+    '''
+    params:
+    -text_arr: A 2-D numpy array of the text to write to the document
+    -chroma: A 3-D numpy array containing the RGB values to assign to each character of text
+    -write_path: The path to write the output file to
+    -overwrite: A Boolean representing whether or not to overwrite an existing .docx file if found.
+
+    return:
+    -the path to the output file
+    '''
     FONT_SIZE = 750 / min(text_arr.shape[0], text_arr.shape[1])
     LINE_SPACING = FONT_SIZE * 0.75
 
@@ -59,8 +61,20 @@ def writeHTML(text_arr, chroma, write_path, overwrite):
     ''')
     doc.close()
 
+    return write_path
+
 #writes a text block to a .docx file
 def writeDoc(text_arr, chroma, write_path, overwrite):
+    '''
+    params:
+    -text_arr: A 2-D numpy array of the text to write to the document
+    -chroma: A 3-D numpy array containing the RGB values to assign to each character of text
+    -write_path: The path to write the output file to
+    -overwrite: A Boolean representing whether or not to overwrite an existing .docx file if found.
+
+    return:
+    -the path to the output file
+    '''
     FONT_SIZE = 400 / min(text_arr.shape[0], text_arr.shape[1])
     LINE_SPACING = 0.65
 
@@ -93,3 +107,5 @@ def writeDoc(text_arr, chroma, write_path, overwrite):
         document.save(write_path)
     except:
         raise Exception(f"Invalid write path {write_path}")
+
+    return write_path
