@@ -7,12 +7,12 @@ from docx.shared import RGBColor
 
 FONT = "Courier"
 
-#helper function to 
+#helper function to call one of the two other write functions
 def write(text_arr, chroma, output_file_type, write_path, overwrite):
     if output_file_type == "HTML":
-        writeHTML(text_arr, chroma, write_path, overwrite)
+        return writeHTML(text_arr, chroma, write_path, overwrite)
     elif output_file_type == "Word":
-        writeDoc(text_arr, chroma, write_path, overwrite)
+        return writeDoc(text_arr, chroma, write_path, overwrite)
     else:
         raise Exception("Error writing file.")
 
@@ -28,6 +28,7 @@ def writeHTML(text_arr, chroma, write_path, overwrite):
     return:
     -the path to the output file
     '''
+
     FONT_SIZE = 750 / min(text_arr.shape[0], text_arr.shape[1])
     LINE_SPACING = FONT_SIZE * 0.45
 
