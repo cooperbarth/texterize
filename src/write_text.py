@@ -23,8 +23,9 @@ def write(text_arr, chroma, output_file_type, write_path, overwrite):
 
 #writes a text block to a .HTML file
 def writeHTML(text_arr, chroma, write_path, overwrite):
-    FONT = "courier" #doesn't work right now
-    FONT_SIZE = 3 #Fix to dynamically change
+    FONT = "courier"
+    FONT_SIZE = 750 / min(text_arr.shape[0], text_arr.shape[1])
+    print(FONT_SIZE)
 
     write_path += ".html"
     if overwrite and os.path.exists(write_path):
@@ -53,7 +54,7 @@ def writeHTML(text_arr, chroma, write_path, overwrite):
 
 #writes a text block to a .docx file
 def writeDoc(text_arr, chroma, write_path, overwrite):
-    FONT = "Courier" #doesn't work right now
+    FONT = "Courier"
     FONT_SIZE = 1.0 #Fix to dynamically change
     LINE_SPACING = 0.5 #Fix to dynamically change
 
