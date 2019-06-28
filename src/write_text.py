@@ -23,22 +23,27 @@ def write(text_arr, chroma, output_file_type, write_path, overwrite):
 
 #writes a text block to a .HTML file
 def writeHTML(text_arr, chroma, write_path, overwrite):
+    FONT = "courier" #doesn't work right now
+    FONT_SIZE = 3 #Fix to dynamically change
+
+    write_path += ".html"
     if overwrite and os.path.exists(write_path):
         os.remove(write_path)
     doc = open(write_path, "w")
-    doc.write('''
+    doc.write(f'''
     <html>
         <head>
             <title>Texterize</title>
         </head>
-        <body>
+        <body style='font-size:{FONT_SIZE}pt;'>
     ''')
 
     for i in range(text_arr.shape[0]):
-        doc.write("<text>")
+        doc.write(f"<div style='line-height:{FONT_SIZE * 0.75}pt;'>")
         for j in range(text_arr.shape[1]):
-            doc.write(text_arr[i][j])
-        doc.write("</text>")
+            R, G, B = [int(c) for c in chroma[i][j]]
+            doc.write(f"<text style='font-family:courier; color:rgb({R},{G},{B});'>{text_arr[i][j]}</text>")
+        doc.write("</div>")
 
     doc.write('''
         </body>
@@ -67,11 +72,13 @@ def writeDoc(text_arr, chroma, write_path, overwrite):
 
     for i in range(text_arr.shape[0]):
         p = document.add_paragraph()
+        p.style = doc_style
         for j in range(text_arr.shape[1]):
             c = p.add_run(text_arr[i][j])
             R, G, B = [int(c) for c in chroma[i][j]]
             c.font.color.rgb = RGBColor(R, G, B)
  
+    write_path += ".docx"
     if overwrite and os.path.exists(write_path):
         os.remove(write_path)
     document.save(write_path)

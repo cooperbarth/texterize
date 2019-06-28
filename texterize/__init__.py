@@ -8,8 +8,7 @@ from build_chroma import buildChroma
 from build_block import buildBlock
 from write_text import write
 
-#OUTPUT_DIRECTORY = "../test/output_files/texterize.docx" #this should be changed to "./texterize.docx" upon release
-OUTPUT_DIRECTORY = "../test/output_files/texterize.html"
+OUTPUT_DIRECTORY = "../test/output_files/texterize" #this should be changed to "./texterize" upon release
 SUPPORTED_FILE_TYPES = ["HTML", "Word"]
 
 #main, input text as raw string

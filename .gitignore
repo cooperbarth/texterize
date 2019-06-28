@@ -115,6 +115,7 @@ test/test_img/*.tiff
 #output files
 test/output_files/*.doc
 test/output_files/*.docx
+test/output_files/*.html
 
 #.DS_Store
 *.DS_Store
